@@ -1,0 +1,70 @@
+//buat cek player di dc wak kuu
+
+/*CXX8888888X       88888888888888  8888                      8888    8888  88888888X           8888
+	x888	     888X	  88888888888888   8888                    8888     8888  8888XX8888          8888
+	888        888	  8888              8888                  8888            8888   8888         8888
+	888        888    8888               8888                8888       8888  8888    8888        8888
+	888        888    8888                8888              8888        8888  8888     8888       8888
+	888		     888    88888888888888       8888            8888         8888  8888      8888      8888
+	888		    888X    8888                  8888          8888          8888  8888       8888     8888
+	888      888X     8888                   8888        8888           8888  8888        8888    8888
+	888    888X       8888                    8888      8888            8888  8888         8888   8888
+  888	 888X         88888888888888           8888    8888             8888  8888		      8888XX8888
+	88888X            88888888888888            X888888888              8888  8888           X88888888
+*/ 
+
+DCMD:players(user, channel, params[])
+{
+	new DCC_Embed:dv20k2, dv20k1[256];
+	format(dv20k1, sizeof(dv20k1), "[<🎮dkstore.com>] Devin ganteng: %s", dv20k_number(Iter_Count(Player)));
+	dv20k2 = DCC_CreateEmbed("", dv20k1, "", "", 0x00ff00, "Kota Devin | #dkstoreontop", "", "", "");
+	DCC_SendChannelEmbedMessage(channel, dv20k2);
+	return 1;
+}
+
+stock dv20k_number(number)
+{
+	new i, dv20k2[15];
+	dv20k_cek(dv20k2, number);
+	if(strfind(dv20k2, "-") != -1) i = strlen(dv20k2) - 4;
+	else i = strlen(dv20k2) - 3;
+	while (i >= 1)
+ 	{
+		if(strfind(dv20k2, "-") != -1) strins(dv20k2, ",", i + 1);
+		else strins(dv20k2, ",", i);
+		i -= 3;
+	}
+	return dv20k2;
+}
+
+stock dv20k_cek(dest[], value, bool:pack = false)
+{
+    static const cellmin_value[] = !"-2147483648";
+
+    if (value == cellmin)
+        pack && strpack(dest, cellmin_value, 12) || strunpack(dest, cellmin_value, 12);
+    else
+        format(dest, 12, "%d", value) && pack && strpack(dest, dest, 12);
+}
+
+//LAYER SHOW DI STAT BOT DISCORD
+
+//BISA PAKE INI
+
+task onlineTimer[1000]()
+{
+    new DV20K[1280];
+    format(DV20K, sizeof(DV20K), "%i/%d Players on 🎮dkstore.com", Iter_Count(Player), GetMaxPlayers());
+    DCC_SetBotActivity(DV20K);
+}
+
+//BISAJUGA PAKE INI
+
+forward BotUpdate();
+public BotUpdate()
+{
+    new DV20K[1280];
+    format(DV20K, sizeof(DV20K), "%i/%d Players on 🎮dkstore.com", Iter_Count(Player), GetMaxPlayers());
+    DCC_SetBotActivity(DV20K);
+}
+
