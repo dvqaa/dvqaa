@@ -34,7 +34,7 @@ stock dv20k_cek(dest[], value, bool:pack = false)
         format(dest, 12, "%d", value) && pack && strpack(dest, dest, 12);
 }
 
-//LAYER SHOW DI STAT BOT DISCORD
+//LAYER SHOW DI STATS BOT DISCORD
 
 //BISA PAKE INI
 
