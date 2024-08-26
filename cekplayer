@@ -34,7 +34,9 @@ stock dv20k_cek(dest[], value, bool:pack = false)
         format(dest, 12, "%d", value) && pack && strpack(dest, dest, 12);
 }
 
-//LAYER SHOW DI STATS BOT DISCORD
+//PLAYER SHOW DI STATS BOT DISCORD
+
+PASTE DI main.pwn //sesuaikan dengan nama gamemode kalian
 
 //BISA PAKE INI
 
